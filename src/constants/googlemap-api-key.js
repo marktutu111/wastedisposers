@@ -1,0 +1,2 @@
+const MAPS_API_KEY = "AIzaSyBEPMZP18px7mdEWCZhcVzY43uFM7OKi-Y";
+export { MAPS_API_KEY };

@@ -3,10 +3,12 @@ import {  View, Text, TextInput, StyleSheet } from 'react-native';
 
 import { 
     HomeHeaderBar,
-    Container
+    Container,
+    Button
  } from "../../components";
 
 import { COLORS } from "../../constants";
+import colors from '../../resources/styles/colors';
 
 
 
@@ -17,8 +19,16 @@ class CommentsComponent extends Component {
                 super(props);
 
                 this.state = {
-                    loading: false
+                    loading: false,
+                    comment: '',
                 }
+        }
+
+
+        sendComment () {
+
+            this.setState({ loading: true });
+            setTimeout(() => this.setState({ comment: '', loading: false }), 500);
         }
 
         render() {
@@ -33,10 +43,22 @@ class CommentsComponent extends Component {
 
                     <View style={styles.container}>
 
+                        <Text style={styles.title}>Send us your comments: </Text>
 
                         <TextInput multiline={true} 
                                    underlineColorAndroid="transparent"
-                                   style={styles.inputStyle}/>
+                                   style={styles.inputStyle}
+                                   onChangeText={(text) => this.setState({ comment: text })}
+                                   value={this.state.comment}
+                                   placeholder='Comment:'
+                                   editable={!this.state.loading}/>
+
+
+                        <Button title="send" 
+                                style={styles.buttonStyle}
+                                onPress={this.sendComment.bind(this)}
+                                busy={this.state.loading}>
+                        </Button>
 
 
                     </View>
@@ -65,6 +87,15 @@ const styles = StyleSheet.create({
             paddingLeft: 10,
             paddingRight: 10,
             marginTop: '10%',
+        },
+        title: {
+            fontSize: 20,
+            margin: 30,
+            color: colors.DARK_COLOR
+        },
+        buttonStyle: {
+            marginTop: 50,
+            backgroundColor: colors.DARK_COLOR,
         }
 });
 

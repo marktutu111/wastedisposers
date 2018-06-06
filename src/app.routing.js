@@ -13,6 +13,7 @@ import { LoginComponent,
          DisposalDetailsComponent,
          DisposerRequestsComponent,
          RequestDetailsComponent,
+         CommentsComponent,
          UserRequestsComponent} from "./pages";
 
 import { DrawerComponent_ONE } from "./components";
@@ -121,6 +122,9 @@ const HomeRoute = DrawerNavigator({
     },
     UserRequests: {
         screen: UserRequestsRoute
+    },
+    Comments: {
+        screen: CommentsComponent
     }
 }, {
     initialRouteName: 'Home',
